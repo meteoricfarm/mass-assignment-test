@@ -47,8 +47,8 @@ public class UserController {
         String safeEmail = HtmlUtils.htmlEscape(userDto.getEmail());
 
         // 3. 정화된(안전한) 데이터로 엔티티를 업데이트합니다.
-        currentUser.setUsername(userDto.getUsername());
-        currentUser.setEmail(userDto.getEmail());
+        currentUser.setUsername(safeUsername);
+        currentUser.setEmail(safeEmail);
 
         // 이제 Coverity는 'safeUsername'이 정화 함수를 통과했음을 인지하고
         // 'save' 메소드로 전달되어도 XSS 경고를 발생시키지 않습니다.
